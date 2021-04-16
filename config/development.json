@@ -1,0 +1,30 @@
+{
+  "api": {
+    "baseUrl": "http://192.192.7.224:8000/api/v1/"
+  },
+
+  "paths": {
+    "imagesRoot": "/assets/images/",
+    "userImageFolder": "/assets/images/avatars/"
+  },
+
+  "localization": {
+    "languages": [
+      {"code": "en", "name": "EN", "culture": "en-EN"},
+      {"code": "hr", "name": "HR", "culture": "hr-HR"}
+    ],
+    "defaultLanguage": "en"
+  },
+
+  "notifications": {
+    "options": {
+      "toastLife": 4000,
+      "dismiss": "auto",
+      "newestOnTop": true,
+      "showCloseButton": false,
+      "enableHTML": true
+    }
+  },
+
+  "debugging": true
+}

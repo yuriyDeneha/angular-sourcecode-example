@@ -1,0 +1,112 @@
+<div class="app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mx-4">
+          <div class="card-body p-4">
+            <alert type="danger" *ngIf="(authSandbox.registerError$ | async)" >
+              <strong>{{'auth.sorry' | translate}}!</strong> {{ (authSandbox.registerError$ | async)?.error?.message }}
+            </alert>
+            <alert type="success" *ngIf="(authSandbox.registerLoaded$ | async)" >
+              <strong>{{'auth.good' | translate}}!</strong> {{'auth.registerSuccessMessage' | translate}}
+            </alert>
+            <h1>{{'auth.register' | translate}}</h1>
+            <p class="text-muted">{{'auth.createYourAccount' | translate}}</p>
+            <form [formGroup]="form" novalidate (ngSubmit)="onSubmit($event, form.value)">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="icon-user"></i></span>
+                </div>
+                <input 
+                  class="form-control" 
+                  required 
+                  placeholder="{{'accessUser.lbl.firstName' | translate}}..." 
+                  autocorrect="off" 
+                  autocapitalize="off" 
+                  spellcheck="off" 
+                  formControlName="first_name">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="icon-user"></i></span>
+                </div>
+                <input 
+                  class="form-control" 
+                  required 
+                  placeholder="{{'accessUser.lbl.lastName' | translate}}..." 
+                  autocorrect="off" 
+                  autocapitalize="off" 
+                  spellcheck="off" 
+                  formControlName="last_name">
+              </div>
+  
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input 
+                  class="form-control" 
+                  required 
+                  placeholder="{{'accessUser.lbl.email' | translate}}..." 
+                  autocorrect="off" 
+                  autocapitalize="off" 
+                  spellcheck="off" 
+                  formControlName="email">
+              </div>
+  
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="icon-lock"></i></span>
+                </div>
+                <input 
+                  type="password"
+                  class="form-control" 
+                  required 
+                  placeholder="{{'accessUser.lbl.password' | translate}}..." 
+                  autocorrect="off" 
+                  autocapitalize="off" 
+                  spellcheck="off" 
+                  formControlName="password">
+              </div>
+  
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="icon-lock"></i></span>
+                </div>
+                <input 
+                  type="password"
+                  class="form-control" 
+                  required 
+                  placeholder="{{'accessUser.lbl.confirmPassword' | translate}}..." 
+                  autocorrect="off" 
+                  autocapitalize="off" 
+                  spellcheck="off" 
+                  formControlName="password_confirmation">
+              </div>
+              <div class="input-group mb-4">
+                <div class="pull-left">
+                  <label class="switch switch-text switch-primary-outline-alt">
+                    <input type="checkbox" class="switch-input" formControlName="is_term_accept">
+                    <span class="switch-label" data-on="Yes" data-off="No"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </div>
+                <div class="pull-left ml-2">
+                    Do you agree with the terms &amp; conditions?
+                </div>
+              </div>
+              <button class="btn btn-primary px-3" [disabled]="form.invalid" type="submit">
+                <i [hidden]="authSandbox.registerLoading$ | async" class='fa fa-user-plus'></i>
+                <i [hidden]="!(authSandbox.registerLoading$ | async)" class='fa fa-circle-o-notch fa-spin'></i>
+                {{'auth.createAccount' | translate}}
+              </button>
+              <button type="button" class="btn btn-success" routerLink="/auth/login">
+                <i class="fa fa-lock"></i> Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
