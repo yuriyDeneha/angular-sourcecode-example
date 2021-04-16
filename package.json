@@ -46,6 +46,7 @@
     "ng2-translate": "^5.0.0",
     "ngx-bootstrap": "^2.0.2",
     "ngx-toastr": "^8.10.0",
+    "node-sass": "^5.0.0",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
     "simple-line-icons": "^2.4.1",
